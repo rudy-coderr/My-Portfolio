@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alex Rivera — Frontend Engineer</title>
+<title>Rudy Boringot — Frontend Engineer</title>
 
 <!-- Bootstrap 5 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -369,7 +369,7 @@
 ============================================ -->
 <nav class="navbar navbar-expand-lg navbar-custom py-3">
   <div class="container">
-    <a class="navbar-brand navbar-brand-custom" href="#hero"><span class="bracket">&lt;</span>Alex<span class="bracket">/&gt;</span></a>
+    <a class="navbar-brand navbar-brand-custom" href="#hero"><span class="bracket">&lt;</span>Rudy<span class="bracket">/&gt;</span></a>
     <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <i class="bi bi-list fs-2 text-white"></i>
     </button>
@@ -395,7 +395,7 @@
     <div class="row align-items-center gy-5">
       <div class="col-lg-6">
         <div class="hero-kicker"><span class="dot"></span>Open to Junior Developer roles</div>
-        <h1 class="hero-name">Hi, I'm <span class="accent-text">Alex Rivera</span></h1>
+        <h1 class="hero-name">Hi, I'm <span class="accent-text">Rudy Boringot</span></h1>
         <p class="hero-role">Fresh Computer Science Grad &amp; Aspiring Frontend Developer</p>
         <p class="text-muted mb-4" style="max-width: 520px;">
           I just graduated and I'm eager to learn from a real team. I love building things,
@@ -416,7 +416,7 @@
           </div>
           <div class="code-body">
 <span class="ln">1</span><span class="tok-kw">const</span> <span class="tok-fn">newGrad</span> = {<br>
-<span class="ln">2</span>&nbsp;&nbsp;name: <span class="tok-str">'Alex Rivera'</span>,<br>
+<span class="ln">2</span>&nbsp;&nbsp;name: <span class="tok-str">'Rudy Boringot'</span>,<br>
 <span class="ln">3</span>&nbsp;&nbsp;status: <span class="tok-str">'Fresh Graduate, BS CS'</span>,<br>
 <span class="ln">4</span>&nbsp;&nbsp;based_in: <span class="tok-str">'Manila, PH'</span>,<br>
 <span class="ln">5</span>&nbsp;&nbsp;learning: [<span class="tok-str">'React'</span>, <span class="tok-str">'JS'</span>, <span class="tok-str">'CSS'</span>, <span class="tok-str">'Git'</span>],<br>
@@ -646,7 +646,7 @@
             <i class="bi bi-envelope"></i>
             <div>
               <div class="text-muted small mono">Email</div>
-              <div>hello@alexrivera.dev</div>
+              <div>boringotr@gmail.com</div>
             </div>
           </div>
           <div class="contact-info-item">
@@ -684,7 +684,7 @@
 ============================================ -->
 <footer>
   <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-    <div>© 2026 Alex Rivera. All rights reserved.</div>
+    <div>© 2026 Rudy Boringot. All rights reserved.</div>
     <a href="#hero" class="back-to-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
   </div>
 </footer>
