@@ -34,10 +34,9 @@ class ContactController extends Controller
         } catch (Throwable $e) {
 
             dd([
-                'message' => $e->getMessage(),
-                'file'    => $e->getFile(),
-                'line'    => $e->getLine(),
-                'trace'   => $e->getTraceAsString(),
+                'ERROR' => $e->getMessage(),
+                'FILE'  => $e->getFile(),
+                'LINE'  => $e->getLine(),
             ]);
 
         }
