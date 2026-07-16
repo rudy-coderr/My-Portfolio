@@ -20,7 +20,7 @@ class ContactController extends Controller
 
         try {
 
-            Mail::to('boringotr@gmail.com')->send(
+            Mail::to('boringotrudy8@gmail.com')->send(
                 new ContactMail($request->only([
                     'name',
                     'email',
