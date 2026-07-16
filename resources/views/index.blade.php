@@ -173,7 +173,45 @@
     padding: 0.5rem 1.1rem;
     transition: all 0.2s ease;
   }
-  .btn-resume:hover{ background: var(--accent-glow); color: var(--bg); box-shadow: 0 0 22px rgba(76,141,255,0.45); }
+  .btn-resume:hover{ 
+    background: var(--accent-glow); 
+    color: var(--bg); 
+    box-shadow: 0 0 22px rgba(76,141,255,0.45); 
+  }
+  .btn-resume{
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1.1rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+.btn-resume:hover{ background: var(--accent-glow); color: var(--bg); box-shadow: 0 0 22px rgba(76,141,255,0.45); }
+.btn-resume::after{ display: none; } /* tanggalin default caret, gagamit tayo ng bootstrap icon na lang o custom */
+
+.dropdown-menu{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  margin-top: 0.5rem !important;
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+}
+.dropdown-item{
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  transition: all 0.2s ease;
+}
+.dropdown-item:hover, .dropdown-item:focus{
+  background: var(--accent-soft);
+  color: var(--accent);
+}
 
   .hero-name{
     font-size: clamp(2.4rem, 5vw, 4rem);
@@ -356,17 +394,55 @@
     <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <i class="bi bi-list fs-2 text-white"></i>
     </button>
-    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
-      <ul class="navbar-nav align-items-lg-center gap-lg-2">
-        <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-custom" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-custom" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
-        <li class="nav-item mt-3 mt-lg-0 ms-lg-3">
-          <a class="btn btn-resume" href="#contact"><i class="bi bi-download me-1"></i>Resume</a>
+   <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+    <ul class="navbar-nav align-items-lg-center gap-lg-2">
+        <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#about">About</a>
         </li>
-      </ul>
-    </div>
+
+        <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#skills">Skills</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#projects">Projects</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#contact">Contact</a>
+        </li>
+
+        <li class="nav-item dropdown mt-3 mt-lg-0 ms-lg-3">
+            <a class="btn btn-resume dropdown-toggle"
+               href="#"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+                <i class="bi bi-download me-1"></i> Resume
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item"
+                       href="{{ asset('files/Rudy_Resume.pdf') }}"
+                       download>
+                        <i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>
+                        PDF
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{{ asset('images/Resume.png') }}"
+                       download>
+                        <i class="bi bi-image-fill text-primary me-2"></i>
+                        Image
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
   </div>
 </nav>
 
