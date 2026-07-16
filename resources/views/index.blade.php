@@ -656,31 +656,72 @@
 
     <div class="row g-4">
       <div class="col-lg-7">
-        <form class="contact-form">
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label for="name" class="form-label small text-secondary mono">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Rudy Boringot" required>
-            </div>
-            <div class="col-md-6">
-              <label for="email" class="form-label small text-secondary mono">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="boringotr@gmail.com" required>
-            </div>
-            <div class="col-12">
-              <label for="subject" class="form-label small text-secondary mono">Subject</label>
-              <input type="text" class="form-control" id="subject" placeholder="Project inquiry">
-            </div>
-            <div class="col-12">
-              <label for="message" class="form-label small text-secondary mono">Message</label>
-              <textarea class="form-control" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-send">
+        @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+<form action="{{ route('contact.send') }}" method="POST" class="contact-form">
+    @csrf
+
+    <div class="row g-3">
+
+        <div class="col-md-6">
+            <label for="name" class="form-label small text-secondary mono">Name</label>
+            <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                value="{{ old('name') }}"
+                placeholder="Your Name"
+                required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="email" class="form-label small text-secondary mono">Email</label>
+            <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                value="{{ old('email') }}"
+                placeholder="you@example.com"
+                required>
+        </div>
+
+        <div class="col-12">
+            <label for="subject" class="form-label small text-secondary mono">Subject</label>
+            <input
+                type="text"
+                class="form-control"
+                id="subject"
+                name="subject"
+                value="{{ old('subject') }}"
+                placeholder="Project Inquiry"
+                required>
+        </div>
+
+        <div class="col-12">
+            <label for="message" class="form-label small text-secondary mono">Message</label>
+            <textarea
+                class="form-control"
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell me about your project..."
+                required>{{ old('message') }}</textarea>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-send">
                 <i class="bi bi-send me-2"></i>Send Message
-              </button>
-            </div>
-          </div>
-        </form>
+            </button>
+        </div>
+
+    </div>
+</form>
       </div>
 
       <div class="col-lg-5">
