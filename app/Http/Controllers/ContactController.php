@@ -10,7 +10,7 @@ use Throwable;
 
 class ContactController extends Controller
 {
-   public function send(Request $request)
+  public function send(Request $request)
 {
     $request->validate([
         'name'    => 'required|string|max:255',
@@ -18,8 +18,6 @@ class ContactController extends Controller
         'subject' => 'required|string|max:255',
         'message' => 'required|string',
     ]);
-
-    dd(config('mail.mailers.smtp'));
 
     try {
 
@@ -37,11 +35,10 @@ class ContactController extends Controller
     } catch (Throwable $e) {
 
         dd([
-            'ERROR'     => $e->getMessage(),
-            'CLASS'     => get_class($e),
-            'PREVIOUS'  => $e->getPrevious()?->getMessage(),
-            'FILE'      => $e->getFile(),
-            'LINE'      => $e->getLine(),
+            'ERROR' => $e->getMessage(),
+            'CLASS' => get_class($e),
+            'FILE'  => $e->getFile(),
+            'LINE'  => $e->getLine(),
         ]);
 
     }
