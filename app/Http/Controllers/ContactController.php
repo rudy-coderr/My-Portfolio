@@ -18,15 +18,6 @@ class ContactController extends Controller
         'message' => 'required|string',
     ]);
 
-    dd([
-        'MAIL_MAILER'      => env('MAIL_MAILER'),
-        'MAIL_HOST'        => env('MAIL_HOST'),
-        'MAIL_PORT'        => env('MAIL_PORT'),
-        'MAIL_USERNAME'    => env('MAIL_USERNAME'),
-        'MAIL_ENCRYPTION'  => env('MAIL_ENCRYPTION'),
-        'MAIL_FROM_ADDRESS'=> env('MAIL_FROM_ADDRESS'),
-    ]);
-
     try {
 
         Mail::to('boringotrudy8@gmail.com')->send(
@@ -43,9 +34,15 @@ class ContactController extends Controller
     } catch (Throwable $e) {
 
         dd([
-            'ERROR' => $e->getMessage(),
-            'FILE'  => $e->getFile(),
-            'LINE'  => $e->getLine(),
+            'ERROR'     => $e->getMessage(),
+            'CLASS'     => get_class($e),
+            'PREVIOUS'  => $e->getPrevious()?->getMessage(),
+            'FILE'      => $e->getFile(),
+            'LINE'      => $e->getLine(),
+            'MAILER'    => config('mail.default'),
+            'HOST'      => config('mail.mailers.smtp.host'),
+            'PORT'      => config('mail.mailers.smtp.port'),
+            'USERNAME'  => config('mail.mailers.smtp.username'),
         ]);
 
     }
