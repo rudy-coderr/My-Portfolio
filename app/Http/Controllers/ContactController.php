@@ -17,66 +17,119 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
-        try {
+       try {
 
-            $response = Http::withHeaders([
-                'accept'       => 'application/json',
-                'api-key'      => env('BREVO_API_KEY'),
-                'content-type' => 'application/json',
-            ])->post('https://api.brevo.com/v3/smtp/email', [
+    // EMAIL 1: Send inquiry to you
+    $adminEmail = Http::withHeaders([
+        'accept'       => 'application/json',
+        'api-key'      => env('BREVO_API_KEY'),
+        'content-type' => 'application/json',
+    ])->post('https://api.brevo.com/v3/smtp/email', [
 
-                'sender' => [
-                    'name'  => 'Rudy Portfolio',
-                    'email' => 'boringotrudy8@gmail.com',
-                ],
+        'sender' => [
+            'name'  => 'Rudy Portfolio',
+            'email' => 'boringotrudy8@gmail.com',
+        ],
 
-                'to' => [
-                    [
-                        'email' => 'boringotrudy8@gmail.com',
-                        'name'  => 'Rudy',
-                    ]
-                ],
+        'to' => [
+            [
+                'email' => 'boringotrudy8@gmail.com',
+                'name'  => 'Rudy',
+            ]
+        ],
 
-                'replyTo' => [
-                    'email' => $request->email,
-                    'name'  => $request->name,
-                ],
+        'replyTo' => [
+            'email' => $request->email,
+            'name'  => $request->name,
+        ],
 
-                'subject' => $request->subject,
+        'subject' => 'New Inquiry: '.$request->subject,
 
-                'htmlContent' => "
-                    <h2>New Contact Form Message</h2>
+        'htmlContent' => "
+            <h2>New Contact Form Message</h2>
 
-                    <p><strong>Name:</strong> {$request->name}</p>
+            <p><strong>Name:</strong> {$request->name}</p>
 
-                    <p><strong>Email:</strong> {$request->email}</p>
+            <p><strong>Email:</strong> {$request->email}</p>
 
-                    <p><strong>Subject:</strong> {$request->subject}</p>
+            <p><strong>Subject:</strong> {$request->subject}</p>
 
-                    <p><strong>Message:</strong></p>
+            <p><strong>Message:</strong></p>
 
-                    <p>{$request->message}</p>
-                ",
-            ]);
+            <p>{$request->message}</p>
+        ",
+    ]);
 
-            if ($response->successful()) {
-                return back()->with('success', 'Your message has been sent successfully!');
-            }
 
-            return back()->with(
-                'error',
-                'Failed to send message. Brevo Response: ' . $response->body()
-            );
 
-        } catch (Throwable $e) {
+    // EMAIL 2: Confirmation email to sender
+    $userEmail = Http::withHeaders([
+        'accept'       => 'application/json',
+        'api-key'      => env('BREVO_API_KEY'),
+        'content-type' => 'application/json',
+    ])->post('https://api.brevo.com/v3/smtp/email', [
 
-            dd([
-                'ERROR' => $e->getMessage(),
-                'CLASS' => get_class($e),
-                'FILE'  => $e->getFile(),
-                'LINE'  => $e->getLine(),
-            ]);
+        'sender' => [
+            'name'  => 'Rudy Portfolio',
+            'email' => 'boringotrudy8@gmail.com',
+        ],
 
-        }
+        'to' => [
+            [
+                'email' => $request->email,
+                'name'  => $request->name,
+            ]
+        ],
+
+        'subject' => 'Thank you for contacting Rudy Portfolio',
+
+        'htmlContent' => "
+            <h2>Hello {$request->name},</h2>
+
+            <p>Thank you for reaching out!</p>
+
+            <p>I have received your message and will get back to you as soon as possible.</p>
+
+            <hr>
+
+            <h3>Your Message:</h3>
+
+            <p><strong>Subject:</strong> {$request->subject}</p>
+
+            <p>{$request->message}</p>
+
+            <br>
+
+            <p>Regards,</p>
+            <p><strong>Rudy</strong></p>
+        ",
+    ]);
+
+
+    if ($adminEmail->successful() && $userEmail->successful()) {
+
+        return back()->with(
+            'success',
+            'Your message has been sent successfully!'
+        );
+
+    }
+
+
+    return back()->with(
+        'error',
+        'Email sending failed.'
+    );
+
+
+} catch (Throwable $e) {
+
+    dd([
+        'ERROR' => $e->getMessage(),
+        'FILE'  => $e->getFile(),
+        'LINE'  => $e->getLine(),
+    ]);
+
+}
     }
 }
