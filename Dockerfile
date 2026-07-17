@@ -4,7 +4,14 @@ WORKDIR /var/www/html
 
 COPY . .
 
-RUN apt-get update && apt-get install -y unzip git curl
+RUN apt-get update && apt-get install -y \
+    unzip \
+    git \
+    curl \
+    openssl \
+    ca-certificates
+
+RUN update-ca-certificates
 
 RUN docker-php-ext-install pdo pdo_mysql
 
