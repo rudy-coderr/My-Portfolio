@@ -10,35 +10,44 @@ use Throwable;
 class ContactController extends Controller
 {
     public function send(Request $request)
-    {
-        $request->validate([
-            'name'    => 'required|string|max:255',
-            'email'   => 'required|email|max:255',
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string',
+{
+    $request->validate([
+        'name'    => 'required|string|max:255',
+        'email'   => 'required|email|max:255',
+        'subject' => 'required|string|max:255',
+        'message' => 'required|string',
+    ]);
+
+    dd([
+        'MAIL_MAILER'      => env('MAIL_MAILER'),
+        'MAIL_HOST'        => env('MAIL_HOST'),
+        'MAIL_PORT'        => env('MAIL_PORT'),
+        'MAIL_USERNAME'    => env('MAIL_USERNAME'),
+        'MAIL_ENCRYPTION'  => env('MAIL_ENCRYPTION'),
+        'MAIL_FROM_ADDRESS'=> env('MAIL_FROM_ADDRESS'),
+    ]);
+
+    try {
+
+        Mail::to('boringotrudy8@gmail.com')->send(
+            new ContactMail($request->only([
+                'name',
+                'email',
+                'subject',
+                'message',
+            ]))
+        );
+
+        return back()->with('success', 'Your message has been sent successfully!');
+
+    } catch (Throwable $e) {
+
+        dd([
+            'ERROR' => $e->getMessage(),
+            'FILE'  => $e->getFile(),
+            'LINE'  => $e->getLine(),
         ]);
 
-        try {
-
-            Mail::to('boringotrudy8@gmail.com')->send(
-                new ContactMail($request->only([
-                    'name',
-                    'email',
-                    'subject',
-                    'message',
-                ]))
-            );
-
-            return back()->with('success', 'Your message has been sent successfully!');
-
-        } catch (Throwable $e) {
-
-            dd([
-                'ERROR' => $e->getMessage(),
-                'FILE'  => $e->getFile(),
-                'LINE'  => $e->getLine(),
-            ]);
-
-        }
     }
+}
 }
