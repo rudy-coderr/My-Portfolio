@@ -729,6 +729,8 @@
                            <span class="project-tag">Laravel</span>
                            <span class="project-tag">PHP</span>
                            <span class="project-tag">MySQL</span>
+                           <span class="project-tag">Bootstrap</span>
+                           <span class="project-tag">JavaScript</span>
                         </div>
                        <div class="project-links">
                            <a href="https://cashierop.dar-bicol.com/"
@@ -750,32 +752,34 @@
                <div class="col-md-6 col-lg-4">
                   <div class="project-card">
                      <div class="project-img-wrap">
-                        <img src="https://placehold.co/600x400/12161F/4C8DFF?text=Network+Design" alt="Cisco Packet Tracer Network Design">
+                        <img src="{{ asset('images/vlan.png') }}" alt="Campus Network Design">
                      </div>
-                     <div class="p-4">
-                        <h5 class="mb-2">Campus Network Design (Cisco Packet Tracer)</h5>
-                        <p class="text-secondary small mb-3">A simulated LAN/WAN network built in Cisco Packet Tracer during college, covering router and switch configuration, VLANs, subnetting, and basic troubleshooting.</p>
-                        <div class="mb-3">
-                           <span class="project-tag">Cisco Packet Tracer</span>
-                           <span class="project-tag">Routing &amp; Switching</span>
-                           <span class="project-tag">Subnetting</span>
-                           <span class="project-tag">VLANs</span>
-                        </div>
-                        <div class="project-links">
-                           <a href="https://cashierop.dar-bicol.com/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label="Live demo"
-                              class="me-3">
-                           <i class="bi bi-box-arrow-up-right"></i>
-                           </a>
-                           <a href="https://github.com/rudy-coderr/cashier"
-                              target="_blank"
-                              aria-label="Source code">
-                           <i class="bi bi-github"></i>
-                           </a>
-                        </div>
-                     </div>
+                    <div class="p-4">
+    <h5 class="mb-2">Campus Network Design (Cisco Packet Tracer)</h5>
+
+    <p class="text-secondary small mb-3">
+       A networking lab project completed as part of my academic coursework to strengthen my understanding
+        of network design and configuration. The project demonstrates the implementation of VLANs, trunk
+        links, and connectivity testing within a simulated network environment.
+    </p>
+
+    <div class="mb-3">
+         <span class="project-tag">Cisco Packet Tracer</span>
+        <span class="project-tag">VLAN</span>
+        <span class="project-tag">Trunking</span>
+        <span class="project-tag">Routing &amp; Switching</span>
+    </div>
+
+    <div class="project-links">
+        
+
+        <a href="https://github.com/rudy-coderr/Midterm_Project"
+           target="_blank"
+           aria-label="Source code">
+            <i class="bi bi-github"></i>
+        </a>
+    </div>
+</div>
                   </div>
                </div>
             </div>
