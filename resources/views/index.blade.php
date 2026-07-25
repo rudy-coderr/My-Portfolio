@@ -419,32 +419,12 @@
                   <li class="nav-item">
                      <a class="nav-link nav-link-custom" href="#contact">Contact</a>
                   </li>
-                  <li class="nav-item dropdown mt-3 mt-lg-0 ms-lg-3">
-                     <a class="btn btn-resume dropdown-toggle"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                  <li class="nav-item mt-3 mt-lg-0 ms-lg-3">
+                     <a class="btn btn-resume"
+                        href="{{ asset('files/Rudy_Resume.pdf') }}"
+                        download>
                      <i class="bi bi-download me-1"></i> Resume
                      </a>
-                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li>
-                           <a class="dropdown-item"
-                              href="{{ asset('files/Rudy_Resume.pdf') }}"
-                              download>
-                           <i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>
-                           PDF
-                           </a>
-                        </li>
-                        <li>
-                           <a class="dropdown-item"
-                              href="{{ asset('images/Resume.png') }}"
-                              download>
-                           <i class="bi bi-image-fill text-primary me-2"></i>
-                           Image
-                           </a>
-                        </li>
-                     </ul>
                   </li>
                </ul>
             </div>
