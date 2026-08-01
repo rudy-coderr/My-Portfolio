@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
 Route::post('/contact', [ContactController::class, 'send'])
-    ->name('contact.send');
-Route::get('/', function () {
-    return view('index');
-});
+    ->name('contact.send'); 
